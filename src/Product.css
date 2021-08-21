@@ -1,0 +1,35 @@
+.product__add {
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+.product {
+  width: 300px;
+  background-color: #222;
+  border-radius: 10px;
+  margin: 10px;
+  z-index: 1;
+}
+.product__image {
+  width: 280px;
+  object-fit: contain;
+  border-radius: 20px;
+  padding: 10px;
+}
+.product__info {
+  padding: 0px 10px 20px 10px;
+  color: white;
+  justify-content: space-between;
+}
+.product_infoLineThree {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product__infoLineTwo {
+  color: grey;
+}
+.product__add {
+  border: 1px solid white;
+  border-radius: 6px;
+}
