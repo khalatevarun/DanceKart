@@ -25,6 +25,7 @@ const Product = ({ id, title, info, price, image, handleOpen }) => {
           info: info,
           price: price,
           image: image,
+          quantity: 1,
         },
       });
     }

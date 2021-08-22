@@ -1,3 +1,5 @@
+import { SatelliteTwoTone } from '@material-ui/icons';
+
 export const initialState = {
   basket: [],
 };
@@ -10,6 +12,12 @@ const reducer = (state, action) => {
     case 'ADD_TO_BASKET':
       return {
         basket: [...state.basket, action.item],
+      };
+
+    case 'REMOVE_ALL_FROM_BASKET':
+      return {
+        ...state,
+        basket: state.basket.filter((item) => item.id !== action.id),
       };
 
     default:
