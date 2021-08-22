@@ -30,6 +30,9 @@
   color: grey;
 }
 .product__add {
-  border: 1px solid white;
-  border-radius: 6px;
+  border: 1px solid white !important;
+  padding: 4px 11px !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  color: white !important;
 }

@@ -9,3 +9,9 @@
   margin: 0px 5px;
   justify-content: space-evenly;
 }
+.home__category {
+  font-size: 32px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 40px 0px;
+}
