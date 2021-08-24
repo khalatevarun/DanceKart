@@ -1,3 +1,4 @@
+import { AlternateEmail } from '@material-ui/icons';
 import React from 'react';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -12,6 +13,13 @@ function Login() {
 
   const signIn = (event) => {
     event.preventDefault();
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        history.push('/');
+      })
+      .catch((error) => alert(error.message));
   };
 
   const register = (event) => {
