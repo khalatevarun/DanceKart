@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './firebase';
 import './Orders.css';
+import SingleOrder from './SingleOrder';
 import { useStateValue } from './StateProvider';
 
 function Orders() {
@@ -32,7 +33,7 @@ function Orders() {
 
       <div className="orders__order">
         {orders.map((order) => (
-          <Order order={order} />
+          <SingleOrder order={order} />
         ))}
       </div>
     </div>
