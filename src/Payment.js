@@ -1,13 +1,13 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import axios from 'axios';
+import axios from './axios';
 import { useEffect, useState } from 'react';
 import CurrencyFormat from 'react-currency-format';
 import { Link, useHistory } from 'react-router-dom';
-import Checkout from './Checkout';
 import CheckoutProduct from './CheckoutProduct';
 import './Payment.css';
 import { getBasketTotal } from './reducer';
 import { useStateValue } from './StateProvider';
+import { db } from './firebase';
 
 function Payment() {
   const stripe = useStripe();
@@ -31,7 +31,12 @@ function Payment() {
       });
       setClientSecret(response.data.clientSecret);
     };
+    getClientSecret();
+
+    console.log('Total amount is', getBasketTotal(basket) * 100);
   }, [basket]);
+
+  console.log('the secret is', clientSecret);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,13 +48,28 @@ function Payment() {
           card: elements.getElement(CardElement),
         },
       })
-      .then(({ paymentIntent }) => {
+      .then((res) => {
         //paymentIntent = payment confirmation
+
+        const result = res.error;
+
+        db.collection('users')
+          .doc(user?.uid)
+          .collection('orders')
+          .doc(result.payment_intent.id)
+          .set({
+            basket: basket,
+            amount: result.payment_intent.amount,
+            created: result.payment_intent.created,
+          });
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
 
-        history.replace('/order');
+        dispatch({ type: 'EMPTY_BASKET' });
+
+        // history.replace('/orders');
       });
   };
 
@@ -107,7 +127,7 @@ function Payment() {
                   value={getBasketTotal(basket)}
                   displayType={'text'}
                   thousandSeparator={true}
-                  prefix={'$'}
+                  prefix={'INR'}
                 />
                 <button disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing</p> : 'Buy Now'}</span>
