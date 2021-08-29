@@ -11,6 +11,7 @@ const Header = () => {
   const [{ basket, user }, dispatch] = useStateValue();
 
   const handleAuthentication = () => {
+    console.log('handle authentiation called');
     if (user) {
       auth.signOut();
     }
@@ -35,10 +36,13 @@ const Header = () => {
             </span>
           </div>
         </Link>
-        <div className="header__option">
-          <span className="header__optionLineOne">Returns</span>
-          <span className="header__optionLineTwo">& Orders</span>
-        </div>
+        <Link to="/orders">
+          <div className="header__option">
+            <span className="header__optionLineOne">Returns</span>
+            <span className="header__optionLineTwo">& Orders</span>
+          </div>
+        </Link>
+
         <div className="header__option">
           <span className="header__optionLineOne">Your</span>
           <span className="header__optionLineTwo">Prime</span>

@@ -10,18 +10,20 @@ function Orders() {
 
   useEffect(() => {
     if (user) {
+      console.log('YES USER IS THERE');
       db.collection('users')
         .doc(user?.uid)
         .collection('orders')
         .orderBy('created', 'desc')
-        .onSnapshot((snapshot) =>
+        .onSnapshot((snapshot) => {
+          console.log('Snapshot >>>>>', snapshot);
           setOrders(
             snapshot.docs.map((doc) => ({
               id: doc.id,
               data: doc.data(),
             })),
-          ),
-        );
+          );
+        });
     } else {
       setOrders([]);
     }

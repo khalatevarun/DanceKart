@@ -9,6 +9,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TO_BASKET':
       return {
+        ...state,
         basket: [...state.basket, action.item],
       };
 
@@ -19,6 +20,7 @@ const reducer = (state, action) => {
       };
 
     case 'EMPTY_BASKET':
+      console.log('STATE >>>>>', state);
       return {
         ...state,
         basket: [],
