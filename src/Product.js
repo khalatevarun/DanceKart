@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import './Product.css';
 import { useStateValue } from './StateProvider';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+
 import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
 
