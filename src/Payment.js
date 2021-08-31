@@ -25,7 +25,9 @@ function Payment() {
     //generate the special stripe secret which allows us to charge a customer
     const getClientSecret = async () => {
       const response = await fetch(
-        `/payments/create?total=${getBasketTotal(basket) * 100}`,
+        `https://dancekart.herokuapp.com/payments/create?total=${
+          getBasketTotal(basket) * 100
+        }`,
         {
           method: 'POST',
           //stripe expects the total in currencies subunits
