@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -11,6 +12,10 @@ const stripe = require('stripe')('sk_test_51JSjAISAFlZDjAUsWijnPMh9gaoPRTTrZ7fpZ
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// - Middlewares
+app.use(cors({ origin: true }));
+app.use(express.json());
 
 // - API routes
 app.get('/', (request, response) => response.status(200).send('hello world'));

@@ -29,14 +29,10 @@ function Payment() {
         {
           method: 'POST',
           //stripe expects the total in currencies subunits
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
         },
       );
-      const data = await response.json();
-
-      setClientSecret(data.clientSecret);
+      setClientSecret(response.data.clientSecret);
     };
     getClientSecret();
 
@@ -76,7 +72,7 @@ function Payment() {
 
         dispatch({ type: 'EMPTY_BASKET' });
 
-        history.replace('/orders');
+        // history.replace('/orders');
       });
   };
 
