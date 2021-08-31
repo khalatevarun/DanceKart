@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import amazon_logo from '../src/assets/amazon_logo.png';
+import dk_logo from '../src/assets/dk_logo.png';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from 'react-router-dom';
@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <div className="header">
       <Link to="/">
-        <img src={amazon_logo} className="header__logo" alt="" />
+        <img src={dk_logo} className="header__logo" alt="" />
       </Link>
       <div className="header__search">
         <input className="header__searchInput" type="text" />
