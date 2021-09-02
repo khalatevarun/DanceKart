@@ -19,6 +19,15 @@ const reducer = (state, action) => {
         basket: state.basket.filter((item) => item.id !== action.id),
       };
 
+    case 'UPDATE_QUANTITY':
+      const newBasket = state.basket.map((item) =>
+        item.id === action.id ? { ...item, quantity: action.quantity } : item,
+      );
+      return {
+        ...state,
+        basket: newBasket,
+      };
+
     case 'EMPTY_BASKET':
       console.log('STATE >>>>>', state);
       return {
