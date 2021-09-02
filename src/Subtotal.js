@@ -7,7 +7,7 @@ import './Subtotal.css';
 
 function Subtotal() {
   const history = useHistory();
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ totalItems, basket }, dispatch] = useStateValue();
   console.log('total amount', getBasketTotal(basket));
   return (
     <div className="subtotal">
@@ -15,7 +15,7 @@ function Subtotal() {
         renderText={(value) => (
           <>
             <p>
-              Subtotal ({basket?.length} items):
+              Subtotal ({totalItems} items):
               <strong>{value}</strong>
             </p>
             <small className="subtotal__gift">

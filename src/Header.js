@@ -8,7 +8,7 @@ import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
 
 const Header = () => {
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{ totalItems, user }, dispatch] = useStateValue();
 
   const handleAuthentication = () => {
     console.log('handle authentiation called');
@@ -52,7 +52,7 @@ const Header = () => {
           <div className="header__optionBasket">
             <ShoppingCartIcon />
             <span className="header__optionLineTwo header__basketCount">
-              {basket?.length}
+              {totalItems}
             </span>
           </div>
         </Link>

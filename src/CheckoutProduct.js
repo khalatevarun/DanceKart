@@ -11,6 +11,7 @@ function CheckoutProduct({ id, image, title, price, hideButton, quantity }) {
     dispatch({
       type: 'REMOVE_ALL_FROM_BASKET',
       id: id,
+      quantity: quantity,
     });
   };
 
