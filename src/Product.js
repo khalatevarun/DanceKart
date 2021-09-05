@@ -33,7 +33,17 @@ const Product = ({
   };
 
   const removeFromWishList = () => {
-    fetchWishlist();
+    var product_query = db
+      .collection('users')
+      .doc(user?.uid)
+      .collection('wishlist')
+      .where('id', '==', id);
+    product_query.get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        doc.ref.delete();
+      });
+      fetchWishlist();
+    });
   };
 
   const addToBasket = () => {
@@ -60,15 +70,15 @@ const Product = ({
   return (
     <div className="product">
       {wishlist.includes(id) ? ( // check if product is wishlisted
-        <FavoriteBorderIcon
-          className="product_wishlist"
-          onClick={() => addToWishlist()}
-        />
-      ) : (
         <FavoriteIcon
           className="product_wishlist"
           color="error"
           onClick={() => removeFromWishList()}
+        />
+      ) : (
+        <FavoriteBorderIcon
+          className="product_wishlist"
+          onClick={() => addToWishlist()}
         />
       )}
       <img className="product__image" src={image} alt="" />
