@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { auth } from './firebase';
+import logo from '../src/assets/dk_logo.png';
 import './Login.css';
 
 function Login() {
@@ -38,10 +39,7 @@ function Login() {
   return (
     <div className="login">
       <Link to="/">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpKLdz1AOZHAYRbHKquysD8uI_ftqvRwFHtw&usqp=CAU"
-          alt=""
-        />
+        <img src={logo} alt="" height="300px" />
       </Link>
       <div className="login__container">
         <h1>Sign-in</h1>

@@ -9,6 +9,7 @@
   border-radius: 10px;
   margin: 8px;
   z-index: 1;
+  position: relative;
 }
 .product__image {
   width: 230px;
@@ -39,4 +40,10 @@
   text-transform: none !important;
   letter-spacing: normal !important;
   color: white !important;
+}
+.product_wishlist {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 100;
 }

@@ -1,6 +1,7 @@
 export const initialState = {
   basket: [],
   totalItems: 0,
+  wishlist: [],
 };
 
 export const getBasketTotal = (basket) =>
@@ -51,6 +52,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+      };
+
+    case 'UPDATE_WISHLIST':
+      return {
+        ...state,
+        wishlist: action.wishlist,
       };
 
     default:

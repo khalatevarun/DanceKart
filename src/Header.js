@@ -6,9 +6,12 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
+import { Badge } from '@material-ui/core';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import HomeIcon from '@material-ui/icons/Home';
 
 const Header = () => {
-  const [{ totalItems, user }, dispatch] = useStateValue();
+  const [{ totalItems, user, wishlist }, dispatch] = useStateValue();
 
   const handleAuthentication = () => {
     console.log('handle authentiation called');
@@ -19,13 +22,15 @@ const Header = () => {
 
   return (
     <div className="header">
-      <Link to="/">
+      {/* <Link to="/">
         <img src={dk_logo} className="header__logo" alt="" />
-      </Link>
-      <div className="header__search">
+      </Link> */}
+      {/* <div className="header__search">
         <input className="header__searchInput" type="text" />
         <SearchIcon className="header__searchIcon" />
-      </div>
+
+       
+      </div> */}
 
       <div className="header__nav">
         <Link to={!user && '/login'}>
@@ -38,22 +43,37 @@ const Header = () => {
         </Link>
         <Link to="/orders">
           <div className="header__option">
-            <span className="header__optionLineOne">Returns</span>
-            <span className="header__optionLineTwo">& Orders</span>
+            <Badge color="error" badgeContent={4}>
+              <HomeIcon />
+            </Badge>
+            <span className="header__optionLineTwo">Orders</span>
           </div>
         </Link>
 
+        <Link to="/">
+          <img src={dk_logo} className="header__logo" alt="" />
+        </Link>
+
         <div className="header__option">
-          <span className="header__optionLineOne">Your</span>
-          <span className="header__optionLineTwo">Prime</span>
+          {/* <span className="header__optionLineOne">Your</span> */}
+          <Badge color="error" badgeContent={wishlist.length}>
+            <FavoriteIcon />
+          </Badge>
+          <span className="header__optionLineTwo">Wishlist</span>
         </div>
 
         <Link to="/checkout">
-          <div className="header__optionBasket">
+          {/* <div className="header__optionBasket">
             <ShoppingCartIcon />
             <span className="header__optionLineTwo header__basketCount">
               {totalItems}
             </span>
+          </div> */}
+          <div className="header__option">
+            <Badge color="error" badgeContent={totalItems}>
+              <ShoppingCartIcon />
+            </Badge>
+            <span className="header__optionLineTwo">Cart</span>
           </div>
         </Link>
       </div>
