@@ -180,7 +180,12 @@ function Home() {
             fetchWishlist={fetchWishlist}
           />
         </div>
-        <MessageModal open={open} setOpen={setOpen} />
+        <MessageModal
+          open={open}
+          setOpen={setOpen}
+          title="Product already added to your cart!"
+          description="You can add multiple items of the same at the checkout page."
+        />
       </div>
     </div>
   );

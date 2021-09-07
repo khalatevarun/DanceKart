@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -18,18 +18,19 @@ import Slider from '@material-ui/core/Slider';
 import { db } from './firebase';
 import { useStateValue } from './StateProvider';
 
-const defaultValues = {
-  name: '',
-  contact: 0,
-  pin_code: '',
-  address: '',
-  state: '',
-  city: '',
-};
-
-export default function AddressForm({ setOpen, open }) {
+export default function Address() {
   const [{ user }, dispatch] = useStateValue();
-  const [formValues, setFormValues] = useState(defaultValues);
+  const [addressDetails, setAddressDetails] = useState();
+
+  const [open, setOpen] = useState(false);
+  const [formValues, setFormValues] = useState({
+    name: null,
+    contact: null,
+    pin_code: null,
+    address: null,
+    state: null,
+    city: null,
+  });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormValues({
@@ -44,17 +45,52 @@ export default function AddressForm({ setOpen, open }) {
     db.collection('users')
       .doc(user?.uid)
       .set({ address_details: formValues }, { merge: true });
-
     setOpen(false);
+    fetchAddress();
   };
 
   const handleClose = () => {
     setFormValues({});
     setOpen(false);
   };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  useEffect(() => {
+    if (user) fetchAddress();
+  }, [user]);
+
+  const fetchAddress = () => {
+    db.collection('users')
+      .doc(user?.uid)
+      .onSnapshot((snapshot) => {
+        setAddressDetails({ ...snapshot.data().address_details });
+        setFormValues({ ...snapshot.data().address_details });
+      });
+  };
+
+  console.log('ADDRESS DETAILS >>>', addressDetails);
 
   return (
     <div>
+      {addressDetails ? (
+        <div className="address__data">
+          <h4>
+            {addressDetails.name}, {addressDetails.contact}{' '}
+          </h4>
+          <div>
+            {addressDetails.address}, {addressDetails.city},{' '}
+            {addressDetails.pincode}, {addressDetails.state}
+          </div>
+          <br />
+          <Button onClick={handleClickOpen} variant="outlined">
+            Change Address
+          </Button>
+        </div>
+      ) : (
+        <Button onClick={handleClickOpen}>Add Address</Button>
+      )}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -83,6 +119,7 @@ export default function AddressForm({ setOpen, open }) {
                   label="Name"
                   type="text"
                   variant="outlined"
+                  defaultValue={addressDetails?.name}
                   value={formValues.name}
                   onChange={handleInputChange}
                 />
@@ -95,6 +132,7 @@ export default function AddressForm({ setOpen, open }) {
                   label="Contact No."
                   type="number"
                   variant="outlined"
+                  defaultValue={addressDetails?.contact}
                   value={formValues.contact}
                   onChange={handleInputChange}
                 />
@@ -118,6 +156,7 @@ export default function AddressForm({ setOpen, open }) {
                   type="number"
                   variant="outlined"
                   value={formValues.pincode}
+                  defaultValue={addressDetails?.pincode}
                   onChange={handleInputChange}
                 />
               </Grid>
@@ -130,6 +169,7 @@ export default function AddressForm({ setOpen, open }) {
                   type="text"
                   variant="outlined"
                   value={formValues.address}
+                  defaultValue={addressDetails?.address}
                   onChange={handleInputChange}
                 />
               </Grid>
@@ -150,6 +190,7 @@ export default function AddressForm({ setOpen, open }) {
                   type="text"
                   variant="outlined"
                   value={formValues.city}
+                  defaultValue={addressDetails?.city}
                   onChange={handleInputChange}
                 />
               </Grid>
@@ -162,6 +203,7 @@ export default function AddressForm({ setOpen, open }) {
                   type="text"
                   variant="outlined"
                   value={formValues.state}
+                  defaultValue={addressDetails?.state}
                   onChange={handleInputChange}
                 />
               </Grid>

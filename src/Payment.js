@@ -9,7 +9,8 @@ import { getBasketTotal } from './reducer';
 import { useStateValue } from './StateProvider';
 import { db } from './firebase';
 import { Button } from '@material-ui/core';
-import AddressForm from './AddressForm';
+
+import Address from './Address';
 
 function Payment() {
   const stripe = useStripe();
@@ -89,12 +90,6 @@ function Payment() {
     setError(event.error ? event.error.message : '');
   };
 
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   return (
     <div className="payment">
       <div className="payment__container">
@@ -103,15 +98,16 @@ function Payment() {
         </h1>
         <div className="payment__section">
           <div className="payment__title">
-            <h3>Delivery Address</h3>
+            <h3>Deliver To</h3>
           </div>
           {/* <div className="payment__address">
             <p>{user?.email}</p>
             <p>123 React Lane</p>
             <p>Los Angele, CA</p>
           </div> */}
-          <AddressForm setOpen={setOpen} open={open} />
-          <Button onClick={() => setOpen(true)}>Add Address</Button>
+          <div className="payment__address">
+            <Address />
+          </div>
         </div>
         <div className="payment__section">
           <div className="payment__title">
