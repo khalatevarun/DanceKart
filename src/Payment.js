@@ -8,6 +8,9 @@ import './Payment.css';
 import { getBasketTotal } from './reducer';
 import { useStateValue } from './StateProvider';
 import { db } from './firebase';
+import { Button } from '@material-ui/core';
+
+import Address from './Address';
 
 function Payment() {
   const stripe = useStripe();
@@ -95,12 +98,15 @@ function Payment() {
         </h1>
         <div className="payment__section">
           <div className="payment__title">
-            <h3>Delivery Address</h3>
+            <h3>Deliver To</h3>
           </div>
-          <div className="payment__address">
+          {/* <div className="payment__address">
             <p>{user?.email}</p>
             <p>123 React Lane</p>
             <p>Los Angele, CA</p>
+          </div> */}
+          <div className="payment__address">
+            <Address />
           </div>
         </div>
         <div className="payment__section">

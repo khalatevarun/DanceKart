@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -20,7 +21,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MessageModal({ open, setOpen }) {
+export default function MessageModal({
+  open,
+  setOpen,
+  title,
+  description,
+  onClick,
+  buttonText,
+}) {
   const classes = useStyles();
 
   const handleClose = () => {
@@ -43,13 +51,14 @@ export default function MessageModal({ open, setOpen }) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">
-              Product already added to your cart!
-            </h2>
+            <h2 id="transition-modal-title">{title}</h2>
             <br />
-            <p id="transition-modal-description">
-              You can add multiple items of the same at the checkout page.
-            </p>{' '}
+            <p id="transition-modal-description">{description}</p> <br />
+            {onClick && (
+              <Button onClick={onClick} variant="outlined">
+                {buttonText}
+              </Button>
+            )}
           </div>
         </Fade>
       </Modal>
