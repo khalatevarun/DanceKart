@@ -33,11 +33,15 @@ function Orders() {
     <div className="orders">
       <h1>Your Orders</h1>
 
-      <div className="orders__order">
-        {orders.map((order) => (
-          <SingleOrder order={order} />
-        ))}
-      </div>
+      {orders.length > 0 ? (
+        <div className="orders__order">
+          {orders.map((order) => (
+            <SingleOrder order={order} />
+          ))}
+        </div>
+      ) : (
+        <h2>You dont have any order history</h2>
+      )}
     </div>
   );
 }

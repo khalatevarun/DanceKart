@@ -3,7 +3,7 @@
 }
 .checkoutProduct {
   display: flex;
-  margin: 30px 10px;
+  margin: 0px 10px 30px 10px;
 }
 .checkoutProduct__right {
   margin-left: 20px;

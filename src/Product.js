@@ -69,7 +69,9 @@ const Product = ({
 
   return (
     <div className="product">
-      {wishlist.includes(id) ? ( // check if product is wishlisted
+      {wishlist.some(function (product) {
+        return product['id'] === id;
+      }) ? ( // check if product is wishlisted
         <FavoriteIcon
           className="product_wishlist"
           color="error"

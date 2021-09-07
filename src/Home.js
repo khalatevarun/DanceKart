@@ -27,7 +27,7 @@ function Home() {
       .onSnapshot((snapshot) => {
         dispatch({
           type: 'UPDATE_WISHLIST',
-          wishlist: snapshot.docs.map((doc) => doc.data().id),
+          wishlist: snapshot.docs.map((doc) => doc.data()),
         });
       });
   };

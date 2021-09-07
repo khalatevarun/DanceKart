@@ -60,8 +60,8 @@ function Login() {
             Sign In
           </button>
           <p>
-            By continuing, you agree to Amazon's Conditions of Use and Privacy
-            Notice.
+            By continuing, you agree to DanceKart's Conditions of Use and
+            Privacy Notice.
           </p>
           <button className="login_registerButton" onClick={register}>
             Create your account
