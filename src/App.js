@@ -11,6 +11,7 @@ import { useStateValue } from './StateProvider';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import Orders from './Orders';
+import Wishlist from './Wishlist';
 
 const promise = loadStripe(
   'pk_test_51JSjAISAFlZDjAUs1eXFCTRPN9rZ2smT3ycCQmvmhirClh8G6sBvEVHTzWBMHfoglVyZ4CNixcT9XgVzcRNeDBaS00p4yRoHjG',
@@ -42,6 +43,10 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
+          <Route path="/wishlist">
+            <Header />
+            <Wishlist />
+          </Route>
           <Route path="/checkout">
             <Header />
             <Checkout />

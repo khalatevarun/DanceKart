@@ -43,9 +43,7 @@ const Header = () => {
         </Link>
         <Link to="/orders">
           <div className="header__option">
-            <Badge color="error" badgeContent={4}>
-              <HomeIcon />
-            </Badge>
+            <span className="header__optionLineOne">Your</span>
             <span className="header__optionLineTwo">Orders</span>
           </div>
         </Link>
@@ -54,13 +52,15 @@ const Header = () => {
           <img src={dk_logo} className="header__logo" alt="" />
         </Link>
 
-        <div className="header__option">
-          {/* <span className="header__optionLineOne">Your</span> */}
-          <Badge color="error" badgeContent={wishlist.length}>
-            <FavoriteIcon />
-          </Badge>
-          <span className="header__optionLineTwo">Wishlist</span>
-        </div>
+        <Link to="/wishlist">
+          <div className="header__option">
+            {/* <span className="header__optionLineOne">Your</span> */}
+            <Badge color="error" badgeContent={wishlist.length}>
+              <FavoriteIcon />
+            </Badge>
+            <span className="header__optionLineTwo">Wishlist</span>
+          </div>
+        </Link>
 
         <Link to="/checkout">
           {/* <div className="header__optionBasket">
