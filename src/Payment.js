@@ -23,6 +23,7 @@ function Payment() {
   const [succeeded, setSucceeded] = useState(null);
   const [processing, setProcessing] = useState('');
   const [clientSecret, setClientSecret] = useState(true);
+  const [addressDetails, setAddressDetails] = useState();
 
   useEffect(() => {
     //generate the special stripe secret which allows us to charge a customer
@@ -73,6 +74,7 @@ function Payment() {
             basket: basket,
             amount: result.payment_intent.amount,
             created: result.payment_intent.created,
+            addressDetails: addressDetails,
           });
 
         setSucceeded(true);
@@ -100,13 +102,11 @@ function Payment() {
           <div className="payment__title">
             <h3>Deliver To</h3>
           </div>
-          {/* <div className="payment__address">
-            <p>{user?.email}</p>
-            <p>123 React Lane</p>
-            <p>Los Angele, CA</p>
-          </div> */}
           <div className="payment__address">
-            <Address />
+            <Address
+              addressDetails={addressDetails}
+              setAddressDetails={setAddressDetails}
+            />
           </div>
         </div>
         <div className="payment__section">

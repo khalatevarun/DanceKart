@@ -11,5 +11,20 @@
 }
 .order__total {
   font-weight: 500;
-  text-align: right;
+  margin-left: 10px;
+}
+.order__bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.order__date {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+.order__address {
+  margin-left: 10px;
+}
+.order__middle {
+  display: flex;
 }

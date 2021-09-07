@@ -18,9 +18,8 @@ import Slider from '@material-ui/core/Slider';
 import { db } from './firebase';
 import { useStateValue } from './StateProvider';
 
-export default function Address() {
+export default function Address({ addressDetails, setAddressDetails }) {
   const [{ user }, dispatch] = useStateValue();
-  const [addressDetails, setAddressDetails] = useState();
 
   const [open, setOpen] = useState(false);
   const [formValues, setFormValues] = useState({
