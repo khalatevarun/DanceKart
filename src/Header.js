@@ -16,6 +16,10 @@ const Header = () => {
   const handleAuthentication = () => {
     console.log('handle authentiation called');
     if (user) {
+      dispatch({
+        type: 'LOGOUT',
+        user: user,
+      });
       auth.signOut();
     }
   };

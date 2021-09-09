@@ -60,6 +60,9 @@ const reducer = (state, action) => {
         wishlist: action.wishlist,
       };
 
+    case 'LOGOUT':
+      return { basket: [], totalItems: 0, wishlist: [] };
+
     default:
       return state;
   }

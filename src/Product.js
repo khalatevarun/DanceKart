@@ -17,19 +17,24 @@ const Product = ({
   image,
   handleOpen,
   fetchWishlist,
+  setOpenSignIn,
 }) => {
   const [{ user, wishlist }, dispatch] = useStateValue();
   const [selected, setSelected] = useState(false);
 
   const addToWishlist = () => {
-    db.collection('users').doc(user?.uid).collection('wishlist').add({
-      id: id,
-      title: title,
-      info: info,
-      price: price,
-      image: image,
-    });
-    fetchWishlist();
+    if (user) {
+      db.collection('users').doc(user?.uid).collection('wishlist').add({
+        id: id,
+        title: title,
+        info: info,
+        price: price,
+        image: image,
+      });
+      fetchWishlist();
+    } else {
+      setOpenSignIn(true);
+    }
   };
 
   const removeFromWishList = () => {
