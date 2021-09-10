@@ -15,7 +15,6 @@ const reducer = (state, action) => {
         basket: [...state.basket, action.item],
         totalItems: state.totalItems + 1,
       };
-
     case 'REMOVE_ALL_FROM_BASKET':
       console.log('ITEMS REMOVED>>>>', action.quantity);
 
@@ -24,7 +23,6 @@ const reducer = (state, action) => {
         basket: state.basket.filter((item) => item.id !== action.id),
         totalItems: state.totalItems - action.quantity,
       };
-
     case 'UPDATE_QUANTITY':
       const indexofItem = state.basket.findIndex(
         (basketItem) => basketItem.id === action.id,
@@ -40,26 +38,22 @@ const reducer = (state, action) => {
         totalItems:
           state.totalItems + parseInt(action.quantity) - olderQuantity,
       };
-
     case 'EMPTY_BASKET':
       console.log('STATE >>>>>', state);
       return {
         ...state,
         basket: [],
       };
-
     case 'SET_USER':
       return {
         ...state,
         user: action.user,
       };
-
     case 'UPDATE_WISHLIST':
       return {
         ...state,
         wishlist: action.wishlist,
       };
-
     case 'LOGOUT':
       return { basket: [], totalItems: 0, wishlist: [] };
 

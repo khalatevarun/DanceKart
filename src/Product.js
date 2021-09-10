@@ -2,7 +2,6 @@ import { Button } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import './Product.css';
 import { useStateValue } from './StateProvider';
-
 import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -19,9 +18,13 @@ const Product = ({
   fetchWishlist,
   setOpenSignIn,
 }) => {
-  const [{ user, wishlist }, dispatch] = useStateValue();
-  const [selected, setSelected] = useState(false);
-
+  const [{ user, wishlist, basket }, dispatch] = useStateValue();
+  const [selected, setSelected] = useState(
+    basket.some(function (o) {
+      return o['id'] === id;
+    }),
+  );
+  // if product present in cart set selected true
   const addToWishlist = () => {
     if (user) {
       db.collection('users').doc(user?.uid).collection('wishlist').add({
@@ -57,7 +60,7 @@ const Product = ({
       handleOpen();
     } else {
       setSelected(true);
-      //disptach the item into the data layer
+      //dispatch the item into the data layer
       dispatch({
         type: 'ADD_TO_BASKET',
         item: {

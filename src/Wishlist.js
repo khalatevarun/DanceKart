@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './firebase';
+import MessageModal from './MessageModal';
 import Product from './Product';
 import { useStateValue } from './StateProvider';
 import './Wishlist.css';
@@ -44,6 +45,12 @@ function Wishlist() {
       ) : (
         <h2>Your wishlist is currently empty</h2>
       )}
+      <MessageModal
+        open={open}
+        setOpen={setOpen}
+        title="Product already added to your cart!"
+        description="You can add multiple items of the same at the checkout page."
+      />
     </div>
   );
 }
