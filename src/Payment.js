@@ -11,6 +11,7 @@ import { db } from './firebase';
 import { Button } from '@material-ui/core';
 
 import Address from './Address';
+import MessageModal from './MessageModal';
 
 function Payment() {
   const stripe = useStripe();
@@ -24,6 +25,7 @@ function Payment() {
   const [processing, setProcessing] = useState('');
   const [clientSecret, setClientSecret] = useState(true);
   const [addressDetails, setAddressDetails] = useState();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     //generate the special stripe secret which allows us to charge a customer
@@ -53,6 +55,10 @@ function Payment() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!addressDetails) {
+      setOpen(true);
+      return;
+    }
     setProcessing(true);
 
     const payload = await stripe
@@ -120,6 +126,7 @@ function Payment() {
                 price={item.price}
                 title={item.title}
                 image={item.image}
+                quantity={item.quantity}
               />
             ))}
           </div>
@@ -153,6 +160,12 @@ function Payment() {
           </div>
         </div>
       </div>
+      <MessageModal
+        open={open}
+        setOpen={setOpen}
+        title="Address details missing"
+        description="Pleas enter address details in order to continues the payment process"
+      />
     </div>
   );
 }

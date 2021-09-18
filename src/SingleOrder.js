@@ -23,6 +23,7 @@ function SingleOrder({ order }) {
           price={item.price}
           title={item.title}
           image={item.image}
+          quantity={item.quantity}
           hideButton
         />
       ))}

@@ -10,6 +10,7 @@ import { useHistory } from 'react-router';
 import { items } from './constants/products/products';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { Button } from '@material-ui/core';
 
 function Home() {
   const history = useHistory();
@@ -51,12 +52,20 @@ function Home() {
   };
 
   const handleFilter = (filter) => {
+    setSelectedFilter(filter);
+
     if (filter === 'All') {
       setItemList(items);
     } else {
-      setSelectedFilter(filter);
       setItemList(items.filter((item) => item.category === filter));
     }
+  };
+
+  const handleShopNow = () => {
+    window.scroll({
+      top: 1000,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -65,12 +74,24 @@ function Home() {
         <div className="home__hero">
           <img className="home__image" src={banner2} alt="" />
           <div className="hero__content">
-            <div className="home__heroTitle">Eleveate Minamlism</div>
-            <div>Shop Now</div>
+            <div className="home__heroTitle">
+              Welcome to <span className="home_heroTitleRed">DanceKart</span>
+            </div>
+            <div className="hero__subTitle">
+              We bring you clothes and accessories with utmost comfort while you
+              push yourself out of your comfort zone.
+            </div>
+            <Button
+              onClick={handleShopNow}
+              variant="outlined"
+              className="hero__shopnow"
+            >
+              Shop Now
+            </Button>
           </div>
         </div>
 
-        <div className="home__filters">
+        <div className="home__filters" id="filters">
           <Tabs
             value={selectedFilter}
             onChange={handleFilter}
@@ -80,10 +101,13 @@ function Home() {
           >
             {filters.map((filter) => (
               <Tab
-                className="home__singleFilter"
+                className={`home__singleFilter ${
+                  filter === selectedFilter ? 'home_singleFilterActive' : ''
+                }`}
                 onClick={() => handleFilter(filter)}
                 textColor="primary"
                 label={filter}
+                selected={filter === selectedFilter}
               />
             ))}
           </Tabs>

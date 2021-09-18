@@ -34,7 +34,7 @@ function Wishlist() {
             <Product
               image={item.image}
               title={item.title}
-              info={item.infp}
+              info={item.info}
               price={item.price}
               id={item.id}
               handleOpen={handleOpen}

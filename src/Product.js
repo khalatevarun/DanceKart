@@ -97,7 +97,7 @@ const Product = ({
         <div className="product__infoLineTwo">{info}</div>
         <br />
         <div className="product_infoLineThree">
-          <div className="product__price">Rs. {price}</div>
+          <div className="product__price">INR {price}</div>
           <Button
             variant="outlined"
             className="product__add"

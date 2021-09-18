@@ -4,12 +4,35 @@
 }
 .home__heroTitle {
   font-weight: bold;
-  font-size: 36px;
+  font-size: 64px;
   left: 100px;
+  color: #eae9e7;
+  text-shadow: 2px 2px #222;
+}
+.hero__subTitle {
+  margin: 30px 0px;
+  font-size: 24px;
+  font-style: italic;
+  color: white;
+}
+.home_heroTitleRed {
+  color: #fe4236;
 }
 .hero__content {
   position: absolute;
   top: 300px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.hero__shopnow.MuiButton-outlined {
+  padding: 5px 15px;
+  border: white !important;
+  color: white !important;
+  background-color: #fe4236 !important;
+}
+
+.MuiButton-root:hover {
+  background-color: #222 !important;
 }
 
 .home__image {
@@ -35,4 +58,25 @@
   display: flex;
   margin: 20px 40px;
   font-size: 24px;
+}
+.home_singleFilterActive {
+  font-weight: bold !important;
+  color: #fe4236 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero__content {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .home__image {
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    mask-image: linear-gradient(to bottom, rgba(1, 0, 0, 1), rgba(0, 0, 0, 0));
+    position: relative;
+  }
 }

@@ -7,14 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Slider from '@material-ui/core/Slider';
+
 import { db } from './firebase';
 import { useStateValue } from './StateProvider';
 
@@ -64,8 +57,10 @@ export default function Address({ addressDetails, setAddressDetails }) {
     db.collection('users')
       .doc(user?.uid)
       .onSnapshot((snapshot) => {
-        setAddressDetails({ ...snapshot.data().address_details });
-        setFormValues({ ...snapshot.data().address_details });
+        if (snapshot.data()) {
+          setAddressDetails({ ...snapshot.data()?.address_details });
+          setFormValues({ ...snapshot.data()?.address_details });
+        }
       });
   };
 
