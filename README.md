@@ -12,7 +12,7 @@
 A one stop shop for all the fashion and lifestyle needs of a dancer.
 </p>
 
-DanceKart is an e-commerce store for all the dance enthusiast. 
+DanceKart is an e-commerce store for all the dance enthusiast where you can find all kinds of products, wishlist them and add the ones you want to buy to your cart and make instant payment through card.
 
 <h2>Features</h2> 
 
@@ -25,7 +25,7 @@ DanceKart is an e-commerce store for all the dance enthusiast.
 Following is a sneak peek of how the interface looks. To use the website live, head on over to the [link](https://entertainment-hub.netlify.app/)
 
 
-<h2> Learnings </h2>
+
 
 
   
