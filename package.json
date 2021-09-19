@@ -1,6 +1,9 @@
 {
   "name": "amazon-clone",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.16.0"
+  },
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.1.1",
