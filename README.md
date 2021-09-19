@@ -45,11 +45,21 @@ DanceKart is a fashion e-commerce web application for all the dance enthusiast w
    Frontend - ReactJS 
   </li>
                  <li>
-   Styling - Material UI 
+   Styling - Material UI and CSS 
   </li>
                     <li>
-   CI/CD pipeline - Netlify
+   Deployment 
+                 <ul>
+                 <li>React App - CI/CD setup using Github Actions and Netlify</li>
+                 <li>ExpressJS server (to make api requests to Stripe API) - Heroku </li>
+                 </ul>
   </li>
+                 <li>
+                 Authentication and Authorisation - Firebase Authentication ( email/password )
+                 </li>
+                  <li>
+                 Database - Firebase Cloud Firestore
+                 </li>
                
 
   
