@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Checkout.css';
-import ad from '../src/assets/ad.jpg';
 import Subtotal from './Subtotal';
 import CheckoutProduct from './CheckoutProduct';
 import { useStateValue } from './StateProvider';

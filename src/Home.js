@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
-import banner from '../src/assets/banner.jpg';
 import banner2 from '../src/assets/banner2.jpg';
 import Product from './Product';
 import MessageModal from './MessageModal';
@@ -16,7 +15,7 @@ function Home() {
   const history = useHistory();
   const [open, setOpen] = useState(false);
   const [openSignIn, setOpenSignIn] = useState(false);
-  const [{ user, wishlist }, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
   const [filters, setFilters] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [itemList, setItemList] = useState(items);

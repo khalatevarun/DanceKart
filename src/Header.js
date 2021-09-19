@@ -1,14 +1,12 @@
 import React from 'react';
 import './Header.css';
 import dk_logo from '../src/assets/dk_logo.png';
-import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
 import { Badge } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import HomeIcon from '@material-ui/icons/Home';
 
 const Header = () => {
   const [{ totalItems, user, wishlist }, dispatch] = useStateValue();
