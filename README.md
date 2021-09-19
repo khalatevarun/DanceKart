@@ -2,7 +2,7 @@
 <h1 align="center">
 <p align="center">
   <a>
-    <img alt="Logo" src=" width="100"/>
+    <img alt="Logo" src="https://github.com/khalatevarun/DanceKart/blob/main/src/assets/dk_logo.png" width="100"/>
   </a>
 </p>
   <a>DanceKart</a>
