@@ -12,7 +12,6 @@ const Header = () => {
   const [{ totalItems, user, wishlist }, dispatch] = useStateValue();
 
   const handleAuthentication = () => {
-    console.log('handle authentiation called');
     if (user) {
       dispatch({
         type: 'LOGOUT',

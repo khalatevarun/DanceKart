@@ -7,7 +7,6 @@ export const initialState = {
 export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => item.price + amount, 0);
 const reducer = (state, action) => {
-  console.log(action, state);
   switch (action.type) {
     case 'ADD_TO_BASKET':
       return {
@@ -16,8 +15,6 @@ const reducer = (state, action) => {
         totalItems: state.totalItems + 1,
       };
     case 'REMOVE_ALL_FROM_BASKET':
-      console.log('ITEMS REMOVED>>>>', action.quantity);
-
       return {
         ...state,
         basket: state.basket.filter((item) => item.id !== action.id),
@@ -39,7 +36,6 @@ const reducer = (state, action) => {
           state.totalItems + parseInt(action.quantity) - olderQuantity,
       };
     case 'EMPTY_BASKET':
-      console.log('STATE >>>>>', state);
       return {
         ...state,
         basket: [],

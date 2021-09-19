@@ -55,7 +55,6 @@ const Product = ({
   };
 
   const addToBasket = () => {
-    console.log('aasdas');
     if (selected) {
       handleOpen();
     } else {

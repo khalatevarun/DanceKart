@@ -47,11 +47,7 @@ function Payment() {
       setClientSecret(data.clientSecret);
     };
     getClientSecret();
-
-    console.log('Total amount is', getBasketTotal(basket) * 100);
   }, [basket]);
-
-  console.log('the secret is', clientSecret);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

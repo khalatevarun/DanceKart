@@ -32,7 +32,6 @@ export default function Address({ addressDetails, setAddressDetails }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues);
 
     db.collection('users')
       .doc(user?.uid)
@@ -63,8 +62,6 @@ export default function Address({ addressDetails, setAddressDetails }) {
         }
       });
   };
-
-  console.log('ADDRESS DETAILS >>>', addressDetails);
 
   return (
     <div>

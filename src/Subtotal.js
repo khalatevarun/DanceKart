@@ -10,7 +10,6 @@ function Subtotal() {
   const history = useHistory();
   const [{ totalItems, basket, user }, dispatch] = useStateValue();
   const [open, setOpen] = useState(false);
-  console.log('total amount', getBasketTotal(basket));
 
   const handleClick = () => {
     if (user) {
