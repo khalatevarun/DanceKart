@@ -60,6 +60,19 @@ DanceKart is a fashion e-commerce web application for all the dance enthusiast w
                   <li>
                  Database - Firebase Cloud Firestore
                  </li>
+                 <li>
+                 Additional libraries and APIs
+                 <ul>
+                 <li>
+                 Stripe API
+                 </li>
+                  <li>
+                 Axios
+                 </li>
+                  <li>
+                 Moment
+                 </li>
+                 </li>
                
 
   
