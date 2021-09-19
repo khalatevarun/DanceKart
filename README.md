@@ -80,7 +80,22 @@ DanceKart is a fashion e-commerce web application for all the dance enthusiast w
 
 Following is a sneak peek of how the interface looks. To use the website live, head on over to the [link](https://entertainment-hub.netlify.app/)
 
+| Hero Section                             |  | Register Page                             |
+ ------------------------------------ |  ------------------------------------ |
+ ![](https://github.com/khalatevarun/DanceKart/blob/main/screenshots/hero.jpg) |  ![](https://github.com/khalatevarun/DanceKart/blob/main/screenshots/register.jpg) |                
 
+| Product Listing                              | Wishlist                             |
+| ------------------------------------ | ------------------------------------ |
+| ![](https://github.com/khalatevarun/DanceKart/blob/main/screenshots/product_listing.jpg) | ![](https://github.com/khalatevarun/DanceKart/blob/main/screenshots/wishlist.jpg) |
+
+| Checkout Page                             | Payment Page                             |
+| ------------------------------------ | ------------------------------------ |
+| ![](https://github.com/khalatevarun/entertainment-hub/blob/main/Screenshots/search.jpeg) | ![](https://github.com/khalatevarun/entertainment-hub/blob/main/Screenshots/trending.jpeg) |
+
+| Order Page                             | Address Input                             |
+| ------------------------------------ | ------------------------------------ |
+| ![](https://github.com/khalatevarun/DanceKart/blob/main/screenshots/orders.jpg) | ![](https://github.com/khalatevarun/DanceKart/blob/main/screenshots/address.jpg) |
+                   
 
 
 
