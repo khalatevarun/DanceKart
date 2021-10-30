@@ -25,6 +25,7 @@ function SingleOrder({ order }) {
           image={item.image}
           quantity={item.quantity}
           hideButton
+          order
         />
       ))}
 

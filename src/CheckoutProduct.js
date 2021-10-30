@@ -4,7 +4,15 @@ import './CheckoutProduct.css';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { useStateValue } from './StateProvider';
 
-function CheckoutProduct({ id, image, title, price, hideButton, quantity }) {
+function CheckoutProduct({
+  id,
+  image,
+  title,
+  price,
+  hideButton,
+  quantity,
+  order,
+}) {
   const [state, dispatch] = useStateValue();
 
   const removeFromBasket = () => {
@@ -43,6 +51,7 @@ function CheckoutProduct({ id, image, title, price, hideButton, quantity }) {
             <small>INR</small>
             <strong>{price}</strong>
           </p>
+          {order && <div>Quantity: {quantity}</div>}
           <br />
           {!hideButton && (
             <NativeSelect onChange={handleChange} value={quantity}>

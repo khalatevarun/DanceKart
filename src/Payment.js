@@ -18,7 +18,7 @@ function Payment() {
   const elements = useElements();
   const history = useHistory();
 
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{ basket, user, totalAmount }, dispatch] = useStateValue();
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [succeeded, setSucceeded] = useState(null);
@@ -29,24 +29,26 @@ function Payment() {
 
   useEffect(() => {
     //generate the special stripe secret which allows us to charge a customer
-    const getClientSecret = async () => {
-      const response = await fetch(
-        `https://dancekart.herokuapp.com/payments/create?total=${
-          getBasketTotal(basket) * 100
-        }`,
-        {
-          method: 'POST',
-          //stripe expects the total in currencies subunits
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-      const data = await response.json();
+    if (basket.length > 0) {
+      const getClientSecret = async () => {
+        const response = await fetch(
+          `https://dancekart.herokuapp.com/payments/create?total=${
+            totalAmount * 100
+          }`,
+          {
+            method: 'POST',
+            //stripe expects the total in currencies subunits
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        const data = await response.json();
 
-      setClientSecret(data.clientSecret);
-    };
-    getClientSecret();
+        setClientSecret(data.clientSecret);
+      };
+      getClientSecret();
+    }
   }, [basket]);
 
   const handleSubmit = async (event) => {
@@ -136,13 +138,13 @@ function Payment() {
               <CardElement onChange={handleChange} />
               <div className="payment__priceContainer">
                 <CurrencyFormat
-                  renderText={(value) => (
+                  renderText={(totalAmount) => (
                     <>
-                      <h3> Order Total: {value}</h3>
+                      <h3> Order Total: {totalAmount}</h3>
                     </>
                   )}
                   decimalScale={2}
-                  value={getBasketTotal(basket)}
+                  value={totalAmount}
                   displayType={'text'}
                   thousandSeparator={true}
                   prefix={'INR'}
