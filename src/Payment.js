@@ -152,6 +152,12 @@ function Payment() {
                 <button disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing</p> : 'Buy Now'}</span>
                 </button>
+                <br />
+                <br />
+                <div style={{ color: 'grey' }}>
+                  ( Enter '4242424242....' until all entries are filled in the
+                  card details ){' '}
+                </div>
               </div>
               {error && <div>{error}</div>}
             </form>

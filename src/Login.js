@@ -22,6 +22,16 @@ function Login() {
       .catch((error) => alert(error.message));
   };
 
+  const signInAsGuest = (event) => {
+    event.preventDefault();
+    auth
+      .signInWithEmailAndPassword('test@gmail.com', 'password')
+      .then((auth) => {
+        history.push('/');
+      })
+      .catch((error) => alert(error.message));
+  };
+
   const register = (event) => {
     event.preventDefault();
     auth
@@ -56,6 +66,13 @@ function Login() {
           />
           <button className="login_singInButton" onClick={signIn} type="submit">
             Sign In
+          </button>
+          <button
+            className="login_singInButton"
+            onClick={signInAsGuest}
+            type="submit"
+          >
+            Sign In as Guest
           </button>
           <p>
             By continuing, you agree to DanceKart's Conditions of Use and
